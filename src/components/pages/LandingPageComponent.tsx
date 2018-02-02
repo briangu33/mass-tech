@@ -11,81 +11,13 @@ export class LandingPageComponent extends React.Component<any, ILandingPageCompo
                 LandingPageComponent.styles.base,
             ]}>
                 <div style={[
-                    TitleFont,
-                    LandingPageComponent.styles.title,
-                    LandingPageComponent.styles.easeIn(0),
-                ]}>
-                    floot
-                </div>
-                <div style={[
-                    TitleFont,
-                    LandingPageComponent.styles.subtitle,
-                    LandingPageComponent.styles.easeIn(0.1),
-                ]}>
-                    make recorder covers of everything
-                </div>
-                <div style={[
-                    LandingPageComponent.styles.videoContainer,
                     LandingPageComponent.styles.easeIn(0.25),
+                    {width: "100%", height: "100%",}
                 ]}>
-                    <video style={[
-                        LandingPageComponent.styles.videoElement,
-                    ]}
-                           muted={true}
-                           autoPlay={true}
-                           controls={false}
-                           loop={true}>
-                        <source src="/res/videos/floot.mp4"/>
-                    </video>
-                </div>
-                <div style={[
-                    LandingPageComponent.styles.easeIn(0.50),
-                ]}>
-                    <div style={[
-                        LandingPageComponent.styles.pulse(0.50),
-                        TitleFont
-                    ]}>
-                        <input
-                            key="0"
-                            style={[
-                                NiceButton,
-                            ]}
-                            type="button"
-                            value="FLOOTIFY"
-                            onClick={this.onAutoComposeClick.bind(this)}/>
-
-                        <input
-                            key="1"
-                            style={[
-                                NiceButton,
-                            ]}
-                            type="button"
-                            value="RECORD"
-                            onClick={this.onComposeClick.bind(this)}/>
-                    </div>
-                </div>
-                <div style={[
-                    LandingPageComponent.styles.easeIn(0.7),
-                    TitleFont
-                ]}>
-                    <input
-                        key="2"
-                        style={[
-                            LandingPageComponent.styles.stanfordButton,
-                        ]}
-                        type="button"
-                        value="(RECORDER CHOIR @ STANFORD)"
-                        onClick={this.onStanfordClick.bind(this)}/>
-                    <div style={{width: "100%", textAlign: "center"}}>
-                        coming soon
-                    </div>
-                </div>
-                <div style={[
-                    TitleFont,
-                    LandingPageComponent.styles.easeIn(0.8),
-                    LandingPageComponent.styles.contact
-                ]}>
-                    contact: <a href="mailto:ivansergchub@gmail.com">ivan@floot.io</a> + <a href="mailto:briangu33@gmail.com">brian@floot.io</a>
+                <iframe
+                    style={{ width: "100%", height: "100%", }}
+                    src="https://docs.google.com/spreadsheets/d/e/2PACX-1vRnidFxPeEmcKrKRuJL89cVzP0CKDW_PXyOnaeyB7IYOtEVgN83jLq-ThF8T63FROw88ptyoYdnmQwW/pubhtml?widget=true&amp;headers=false">
+                </iframe>
                 </div>
             </div>
         );
