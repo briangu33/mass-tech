@@ -10,12 +10,9 @@ export class AboutPageComponent extends React.Component<IAboutPageComponentProps
         super();
     }
 
-    render() {
+    public render() {
         return (
-            <div style={[
-                AboutPageComponent.styles.base
-            ]}>
-                AboutPageComponent
+            <div>
             </div>
         );
     }
@@ -24,7 +21,7 @@ export class AboutPageComponent extends React.Component<IAboutPageComponentProps
         base: {
             width: "100%"
         }
-    }
+    };
 }
 
 export interface IAboutPageComponentProps {

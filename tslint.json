@@ -17,11 +17,7 @@
       140
     ],
     "member-access": true,
-    "member-ordering": [
-      true,
-      "private-before-public",
-      "variables-before-functions"
-    ],
+    "member-ordering": false,
     "no-arg": true,
     "no-bitwise": true,
     "no-console": [
@@ -41,7 +37,7 @@
     "no-shadowed-variable": true,
     "no-string-literal": false,
     "no-switch-case-fall-through": true,
-    "no-trailing-whitespace": true,
+    "no-trailing-whitespace": false,
     "no-unused-expression": true,
     "no-var-keyword": true,
     "object-literal-sort-keys": false,
@@ -63,13 +59,7 @@
       true,
       "always"
     ],
-    "trailing-comma": [
-      true,
-      {
-        "singleline": "never",
-        "multiline": "never"
-      }
-    ],
+    "trailing-comma": false,
     "triple-equals": [
       true,
       "allow-null-check"

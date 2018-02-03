@@ -3,8 +3,8 @@ import * as Radium from "radium";
 
 @Radium
 export class ErrorPageComponent extends React.Component<IErrorPageComponentProps, IErrorPageComponentState> {
-    props: IErrorPageComponentProps;
-    state: IErrorPageComponentState;
+    private props: IErrorPageComponentProps;
+    private state: IErrorPageComponentState;
 
     constructor(props: IErrorPageComponentProps) {
         super();
