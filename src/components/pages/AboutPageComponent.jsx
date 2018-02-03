@@ -18,27 +18,23 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 Object.defineProperty(exports, "__esModule", { value: true });
 var React = require("react");
 var Radium = require("radium");
-var ErrorPageComponent = /** @class */ (function (_super) {
-    __extends(ErrorPageComponent, _super);
-    function ErrorPageComponent(props) {
+var AboutPageComponent = /** @class */ (function (_super) {
+    __extends(AboutPageComponent, _super);
+    function AboutPageComponent(props) {
         return _super.call(this) || this;
     }
-    ErrorPageComponent_1 = ErrorPageComponent;
-    ErrorPageComponent.prototype.render = function () {
-        return (<div style={[
-            ErrorPageComponent_1.styles.base
-        ]}>
+    AboutPageComponent.prototype.render = function () {
+        return (<div>
             </div>);
     };
-    ErrorPageComponent.styles = {
+    AboutPageComponent.styles = {
         base: {
             width: "100%"
         }
     };
-    ErrorPageComponent = ErrorPageComponent_1 = __decorate([
+    AboutPageComponent = __decorate([
         Radium
-    ], ErrorPageComponent);
-    return ErrorPageComponent;
-    var ErrorPageComponent_1;
+    ], AboutPageComponent);
+    return AboutPageComponent;
 }(React.Component));
-exports.ErrorPageComponent = ErrorPageComponent;
+exports.AboutPageComponent = AboutPageComponent;

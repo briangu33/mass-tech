@@ -2,12 +2,11 @@ import * as express from "express";
 import * as path from "path";
 import * as morgan from "morgan";
 import * as bodyParser from "body-parser";
-import {ApiController, cleanDB} from "./ApiController";
 import {InitializationState} from "../models/IInitializationState";
 import {ErrorMiddleware} from "./ErrorMiddleware";
 import {DEBUG_PORT, PORT, rootPath} from "./Env";
 import * as exphbs from "express-handlebars";
-import {SlackAPI} from "./SlackAPI";
+import {ApiController} from "./ApiController";
 
 export declare var initializedState: InitializationState;
 
@@ -17,11 +16,11 @@ export const resDir = path.join(rootPath, "res");
 export const cssDir = path.join(rootPath, "css");
 
 const app = express();
-const schedule = require('node-schedule');
+const schedule = require("node-schedule");
 
-app.use(bodyParser.json({limit: '50mb'}));
+app.use(bodyParser.json({limit: "50mb"}));
 app.use(morgan("dev" as any));
-app.set('view engine', 'hbs');
+app.set("view engine", "hbs");
 app.engine(".hbs", exphbs({
     defaultLayout: "main",
     extname: ".hbs",
@@ -43,16 +42,4 @@ app.use(ErrorMiddleware);
 
 app.listen(PORT, async () => {
     console.log(`listening on port ${PORT}`);
-});
-
-// schedule jobs
-// clean every day at midnight
-schedule.scheduleJob('* 0 * * *', () => {
-    console.log("Attempting to clean DB.");
-    cleanDB()
-        .then(() => console.log("Finished executing clean job."))
-        .catch(err => {
-            console.log("Could not execute clean job for reason: ");
-            console.log(err);
-        });
 });

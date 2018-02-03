@@ -1,15 +1,14 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-var InMemoryDataLayer = /** @class */ (function () {
-    function InMemoryDataLayer() {
+class InMemoryDataLayer {
+    constructor() {
         this.dataStore = {};
     }
-    InMemoryDataLayer.prototype.save = function (editToken, data) {
+    save(editToken, data) {
         this.dataStore[editToken] = data;
-    };
-    InMemoryDataLayer.prototype.get = function (editToken) {
+    }
+    get(editToken) {
         return this.dataStore[editToken] || {};
-    };
-    return InMemoryDataLayer;
-}());
+    }
+}
 exports.InMemoryDataLayer = InMemoryDataLayer;

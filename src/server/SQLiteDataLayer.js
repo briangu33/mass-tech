@@ -1,63 +1,56 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-var sqlite3 = require("sqlite3");
-var path = require("path");
-var Env_1 = require("./Env");
-var fs = require("fs");
-var util = require("util");
-var exec = require("child_process").exec;
-var SQLiteDataLayer = /** @class */ (function () {
-    function SQLiteDataLayer() {
+const sqlite3 = require("sqlite3");
+const path = require("path");
+const Env_1 = require("./Env");
+const fs = require("fs");
+const util = require("util");
+const exec = require("child_process").exec;
+class SQLiteDataLayer {
+    constructor() {
         this.makeDirIfNotExists(path.join(Env_1.rootPath, "data"));
         this.makeDirIfNotExists(path.join(Env_1.rootPath, "data", "db"));
         sqlite3.verbose();
-        var dbPath = path.join(Env_1.rootPath, "data", "db", "prod_db");
+        const dbPath = path.join(Env_1.rootPath, "data", "db", "prod_db");
         this.db = new sqlite3.Database(dbPath);
     }
-    SQLiteDataLayer.prototype.makeDirIfNotExists = function (path) {
+    makeDirIfNotExists(path) {
         if (!fs.existsSync(path)) {
             fs.mkdirSync(path);
         }
-    };
-    SQLiteDataLayer.prototype.execRunWithPromise = function (query, params) {
-        var _this = this;
-        if (params === void 0) { params = []; }
-        return new Promise(function (resolve, reject) {
-            _this.db.run(query, params, function (err, result) {
+    }
+    execRunWithPromise(query, params = []) {
+        return new Promise((resolve, reject) => {
+            this.db.run(query, params, (err, result) => {
                 return (err ? reject(err) : resolve(result));
             });
         });
-    };
-    SQLiteDataLayer.prototype.execGetWithPromise = function (query, params) {
-        var _this = this;
-        if (params === void 0) { params = []; }
-        return new Promise(function (resolve, reject) {
-            _this.db.get(query, params, function (err, result) {
+    }
+    execGetWithPromise(query, params = []) {
+        return new Promise((resolve, reject) => {
+            this.db.get(query, params, (err, result) => {
                 return (err ? reject(err) : resolve(result));
             });
         });
-    };
-    SQLiteDataLayer.prototype.execAllWithPromise = function (query, params) {
-        var _this = this;
-        if (params === void 0) { params = []; }
-        return new Promise(function (resolve, reject) {
-            _this.db.all(query, params, function (err, result) {
+    }
+    execAllWithPromise(query, params = []) {
+        return new Promise((resolve, reject) => {
+            this.db.all(query, params, (err, result) => {
                 return (err ? reject(err) : resolve(result));
             });
         });
-    };
-    SQLiteDataLayer.prototype.execCommandWithPromise = function (command) {
-        return new Promise(function (resolve, reject) {
-            exec(command, { maxBuffer: 1024 * 1024 }, function (err, stdout, stderr) {
+    }
+    execCommandWithPromise(command) {
+        return new Promise((resolve, reject) => {
+            exec(command, { maxBuffer: 1024 * 1024 }, (err, stdout, stderr) => {
                 if (err) {
                     return reject(err);
                 }
                 return resolve(stdout);
             });
         });
-    };
-    SQLiteDataLayer.prototype.createTables = function () {
-        var _this = this;
+    }
+    createTables() {
         return this.execRunWithPromise("CREATE TABLE IF NOT EXISTS compositions " +
             "(edit_token VARCHAR(100), " +
             "view_token VARCHAR(100), " +
@@ -74,19 +67,18 @@ var SQLiteDataLayer = /** @class */ (function () {
             "video_duration DOUBLE, " +
             "PRIMARY KEY (edit_token), " +
             "UNIQUE (view_token)) ")
-            .then(function () {
-            return _this.execRunWithPromise("CREATE TABLE IF NOT EXISTS compositions_notes_map " +
+            .then(() => {
+            return this.execRunWithPromise("CREATE TABLE IF NOT EXISTS compositions_notes_map " +
                 "(composition_edit_token INT, " +
                 "note_id INT, " +
                 "start INT, " +
                 "end INT)");
         })
-            .then(function () {
+            .then(() => {
         });
-    };
-    SQLiteDataLayer.instancePromise = null;
-    return SQLiteDataLayer;
-}());
+    }
+}
+SQLiteDataLayer.instancePromise = null;
 exports.SQLiteDataLayer = SQLiteDataLayer;
 var TimeInterval;
 (function (TimeInterval) {

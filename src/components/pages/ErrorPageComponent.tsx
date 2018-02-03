@@ -3,26 +3,18 @@ import * as Radium from "radium";
 
 @Radium
 export class ErrorPageComponent extends React.Component<IErrorPageComponentProps, IErrorPageComponentState> {
-    private props: IErrorPageComponentProps;
-    private state: IErrorPageComponentState;
+    public props: IErrorPageComponentProps;
+    public state: IErrorPageComponentState;
 
     constructor(props: IErrorPageComponentProps) {
         super();
     }
 
-    render() {
+    public render() {
         return (
             <div style={[
                 ErrorPageComponent.styles.base
             ]}>
-                code: {this.props.error.code}
-                <br/>
-                message: {this.props.error.message}
-                <br/>
-                {
-                    this.props.isProd ? "" : "debug mode"
-                }
-                <br/>
             </div>
         );
     }
@@ -35,11 +27,6 @@ export class ErrorPageComponent extends React.Component<IErrorPageComponentProps
 }
 
 export interface IErrorPageComponentProps {
-    error: {
-        message: string,
-        code: number
-    }
-    isProd: boolean
 }
 
 export interface IErrorPageComponentState {

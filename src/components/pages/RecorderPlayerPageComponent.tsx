@@ -5,8 +5,8 @@ const axios = require("axios");
 
 @Radium
 export class RecorderPlayerPageComponent extends React.Component<IRecorderPlayerPageComponentProps, IRecorderPlayerPageComponentState> {
-    private props: IRecorderPlayerPageComponentProps;
-    private state: IRecorderPlayerPageComponentState;
+    public props: IRecorderPlayerPageComponentProps;
+    public state: IRecorderPlayerPageComponentState;
 
     constructor(props: IRecorderPlayerPageComponentProps) {
         super();

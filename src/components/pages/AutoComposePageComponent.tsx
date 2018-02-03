@@ -3,8 +3,8 @@ import * as Radium from "radium";
 
 @Radium
 export class AutoComposePageComponent extends React.Component<IAutoComposePageComponentProps, IAutoComposePageComponentState> {
-    private props: IAutoComposePageComponentProps;
-    private state: IAutoComposePageComponentState;
+    public props: IAutoComposePageComponentProps;
+    public state: IAutoComposePageComponentState;
 
     constructor(props: IAutoComposePageComponentProps) {
         super();

@@ -1,5 +1,4 @@
 import * as express from "express";
-import {SQLiteDataLayer} from "./SQLiteDataLayer";
 import {ReactPage} from "./ReactPageRenderMiddleware";
 
 export const ApiController = express.Router();
@@ -23,14 +22,3 @@ ApiController.get("/", (req: express.Request, res: express.Response) => {
         pageName: ReactPage.Landing
     });
 });
-
-export function cleanDB(): Promise<void> {
-    return SQLiteDataLayer
-        .getInstance()
-        .then((dataLayer) => {
-            return dataLayer.cleanUnrecordedCompositions();
-        })
-        .catch(err => {
-            return Promise.reject(err);
-        });
-}
