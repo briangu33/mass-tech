@@ -2,7 +2,6 @@ import * as express from "express";
 import {ReactPage} from "./ReactPageRenderMiddleware";
 
 export const ApiController = express.Router();
-const fs = require("fs");
 
 // const dataStore = new InMemoryDataLayer();
 

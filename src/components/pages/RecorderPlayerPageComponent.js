@@ -8,7 +8,6 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 Object.defineProperty(exports, "__esModule", { value: true });
 const React = require("react");
 const Radium = require("radium");
-const axios = require("axios");
 let RecorderPlayerPageComponent = class RecorderPlayerPageComponent extends React.Component {
     constructor(props) {
         super();

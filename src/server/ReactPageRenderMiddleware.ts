@@ -15,6 +15,6 @@ export enum ReactPage {
 
 declare namespace Express {
     export interface Request {
-        tenant?: string
+        tenant?: string;
     }
 }

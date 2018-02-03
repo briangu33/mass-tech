@@ -3,7 +3,6 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const express = require("express");
 const ReactPageRenderMiddleware_1 = require("./ReactPageRenderMiddleware");
 exports.ApiController = express.Router();
-const fs = require("fs");
 // const dataStore = new InMemoryDataLayer();
 function returnJson(res, promise) {
     promise

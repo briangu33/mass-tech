@@ -3,8 +3,8 @@ import * as Radium from "radium";
 
 @Radium
 export class AboutPageComponent extends React.Component<IAboutPageComponentProps, IAboutPageComponentState> {
-    props: IAboutPageComponentProps;
-    state: IAboutPageComponentState;
+    public props: IAboutPageComponentProps;
+    public state: IAboutPageComponentState;
 
     constructor(props: IAboutPageComponentProps) {
         super();

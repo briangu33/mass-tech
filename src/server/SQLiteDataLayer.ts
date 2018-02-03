@@ -5,7 +5,6 @@ import * as path from "path";
 import {rootPath} from "./Env";
 import * as fs from "fs";
 
-const util = require("util");
 const exec = require("child_process").exec;
 
 export class SQLiteDataLayer implements IDataLayer {
@@ -26,7 +25,7 @@ export class SQLiteDataLayer implements IDataLayer {
         }
     }
 
-    execRunWithPromise(query: string, params: any[] = []): Promise<RunResult> {
+    private execRunWithPromise(query: string, params: any[] = []): Promise<RunResult> {
         return new Promise<RunResult>((resolve, reject) => {
             this.db.run(query, params, (err, result) => {
                 return (err ? reject(err) : resolve(result));
@@ -34,7 +33,7 @@ export class SQLiteDataLayer implements IDataLayer {
         });
     }
 
-    execGetWithPromise(query: string, params: any[] = []): Promise<RunResult> {
+    private execGetWithPromise(query: string, params: any[] = []): Promise<RunResult> {
         return new Promise<RunResult>((resolve, reject) => {
             this.db.get(query, params, (err, result) => {
                 return (err ? reject(err) : resolve(result));
@@ -42,7 +41,7 @@ export class SQLiteDataLayer implements IDataLayer {
         });
     }
 
-    execAllWithPromise(query: string, params: any[] = []): Promise<RunResult[]> {
+    private execAllWithPromise(query: string, params: any[] = []): Promise<RunResult[]> {
         return new Promise<RunResult[]>((resolve, reject) => {
             this.db.all(query, params, (err, result) => {
                 return (err ? reject(err) : resolve(result));
@@ -50,7 +49,7 @@ export class SQLiteDataLayer implements IDataLayer {
         });
     }
 
-    execCommandWithPromise(command: string): Promise<string> {
+    private execCommandWithPromise(command: string): Promise<string> {
         return new Promise<string>((resolve, reject) => {
             exec(command, {maxBuffer: 1024 * 1024}, (err, stdout, stderr) => {
                 if (err) {
@@ -61,7 +60,7 @@ export class SQLiteDataLayer implements IDataLayer {
         });
     }
 
-    createTables(): Promise<void> {
+    public createTables(): Promise<void> {
         return this.execRunWithPromise(
             "CREATE TABLE IF NOT EXISTS compositions " +
             "(edit_token VARCHAR(100), " +
@@ -89,32 +88,5 @@ export class SQLiteDataLayer implements IDataLayer {
             })
             .then(() => {
             });
-    }
-}
-
-export enum TimeInterval {
-    Day = "day",
-    Week = "week",
-    Month = "month",
-    AllTime = "all_time",
-}
-
-export function timeIntervalToMillis(timeInterval: TimeInterval): number {
-    switch (timeInterval) {
-        case "day": {
-            return 1000 * 60 * 60 * 24;
-        }
-        case "week": {
-            return 1000 * 60 * 60 * 24 * 7;
-        }
-        case "month": {
-            return 1000 * 60 * 60 * 24 * 31;
-        }
-        case "all_time": {
-            return 1000 * 60 * 60 * 24 * 365 * 30;
-        }
-        default: {
-            return 0;
-        }
     }
 }

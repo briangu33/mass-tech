@@ -1,17 +1,19 @@
 import * as React from "react";
 import * as Radium from "radium";
-import * as color from "color";
 
 @Radium
 export class LandingPageComponent extends React.Component<any, ILandingPageComponentState> {
     public render() {
-        let cells: string[][] = [["1", "two", "three"], ["four", "5", "six"], ["seven", "eight", "9"]];
+        let cells: string[][] = Array(100).fill(Array(100).fill("sample value"));
 
         let rows = cells.map((row: string[], rowIndex: number) => {
             let cellsList = row.map((cell: string, colIndex: number) => {
                 return (
                     <div key={colIndex} style={{
-
+                        borderBottom: "1px solid black",
+                        borderRight: "1px solid black",
+                        minWidth: "100px",
+                        height: "20px"
                     }}>
                         <p>{cell}</p>
                     </div>
@@ -21,7 +23,7 @@ export class LandingPageComponent extends React.Component<any, ILandingPageCompo
                 <div key={rowIndex} style={{
                     display: "flex",
                     flexDirection: "row",
-                    justifyContent: "flex-start",
+                    justifyContent: "flex-start"
                 }}>
                     {cellsList}
                 </div>
@@ -29,70 +31,29 @@ export class LandingPageComponent extends React.Component<any, ILandingPageCompo
         });
 
         return (
-            <div style={{
-                display: "flex",
-                flexDirection: "column",
-                justifyContent: "flex-start",
-            }}>
-                {rows}
+            <div>
+                <div style={{
+                    display: "flex",
+                    flexDirection: "column",
+                    justifyContent: "flex-start"
+                }}>
+                    {rows}
+                </div>
+                <div style={{
+                    position: "fixed",
+                    left: "0px",
+                    bottom: "0px",
+                    height: "25px",
+                    width: "100%",
+                    backgroundColor: "#888888",
+                }}>
+
+                </div>
             </div>
         );
     }
 
-    private static styles = {
-        base: {
-            width: "100vw",
-            height: "100vh",
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
-            flexDirection: "column",
-        },
-        title: {
-            fontSize: "4em",
-        },
-        subtitle: {
-            fontSize: "1.5em",
-        },
-        composeButton: {
-            padding: "10px 5px 10px 5px",
-            backgroundColor: "white",
-            color: "black",
-            border: "none",
-            cursor: "pointer",
-            transition: "200ms",
-            fontSize: "1.2em",
-            opacity: 0.8,
-            marginRight: "20px",
-            ":hover": {
-                fontWeight: "bold"
-            },
-        },
-        advancedEditorButton: {
-            padding: "10px 5px 10px 5px",
-            backgroundColor: "white",
-            color: "black",
-            border: "none",
-            cursor: "pointer",
-            fontSize: "1.2em",
-            opacity: 0.8,
-            ":hover": {
-                fontWeight: "bold"
-            },
-        },
-        stanfordButton: {
-            padding: "10px 5px 10px 5px",
-            backgroundColor: "white",
-            color: "black",
-            border: "none",
-            cursor: "auto",
-            fontSize: "1.2em",
-            opacity: 0.8,
-            ":hover": {
-                fontWeight: "bold"
-            },
-        },
-    };
+    private static styles = {};
 }
 
 export interface ILandingPageComponentState {

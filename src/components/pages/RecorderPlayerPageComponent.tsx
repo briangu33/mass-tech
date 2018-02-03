@@ -1,8 +1,6 @@
 import * as React from "react";
 import * as Radium from "radium";
 
-const axios = require("axios");
-
 @Radium
 export class RecorderPlayerPageComponent extends React.Component<IRecorderPlayerPageComponentProps, IRecorderPlayerPageComponentState> {
     public props: IRecorderPlayerPageComponentProps;

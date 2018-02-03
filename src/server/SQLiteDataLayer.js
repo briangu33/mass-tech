@@ -4,7 +4,6 @@ const sqlite3 = require("sqlite3");
 const path = require("path");
 const Env_1 = require("./Env");
 const fs = require("fs");
-const util = require("util");
 const exec = require("child_process").exec;
 class SQLiteDataLayer {
     constructor() {
@@ -80,30 +79,3 @@ class SQLiteDataLayer {
 }
 SQLiteDataLayer.instancePromise = null;
 exports.SQLiteDataLayer = SQLiteDataLayer;
-var TimeInterval;
-(function (TimeInterval) {
-    TimeInterval["Day"] = "day";
-    TimeInterval["Week"] = "week";
-    TimeInterval["Month"] = "month";
-    TimeInterval["AllTime"] = "all_time";
-})(TimeInterval = exports.TimeInterval || (exports.TimeInterval = {}));
-function timeIntervalToMillis(timeInterval) {
-    switch (timeInterval) {
-        case "day": {
-            return 1000 * 60 * 60 * 24;
-        }
-        case "week": {
-            return 1000 * 60 * 60 * 24 * 7;
-        }
-        case "month": {
-            return 1000 * 60 * 60 * 24 * 31;
-        }
-        case "all_time": {
-            return 1000 * 60 * 60 * 24 * 365 * 30;
-        }
-        default: {
-            return 0;
-        }
-    }
-}
-exports.timeIntervalToMillis = timeIntervalToMillis;
